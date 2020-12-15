@@ -21,9 +21,9 @@ public class DAO {
     public static Connection getConnectDB(){
         Connection conn = null;
         try {
-            String url = "jdbc:sqlserver://127.0.0.1:1433;databaseName=LTNC";
-            String user = "sa";
-            String pass = "123";
+            String url = ConnectionString.url;
+            String user = ConnectionString.user;
+            String pass = ConnectionString.pass;
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             conn = DriverManager.getConnection(url, user, pass);
             System.out.println("successfully");
