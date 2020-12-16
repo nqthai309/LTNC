@@ -6,7 +6,9 @@
 package action;
 
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import java.util.Map;
 
 /**
  *
@@ -16,6 +18,11 @@ public class Home extends ActionSupport{
 
     @Override
     public String execute() throws Exception {
-        return super.execute(); //To change body of generated methods, choose Tools | Templates.
+        Map session = ActionContext.getContext().getSession();
+        if(session.get("SessionLogin") != null){
+            return super.execute(); //To change body of generated methods, choose Tools | Templates.
+        }else{
+            return "fail";
+        }
     }
 }

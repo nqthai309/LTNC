@@ -12,8 +12,6 @@ function checkInfo(){
         document.getElementById("divThongBao").innerHTML = "Thông tin chưa đúng.";
         document.getElementById("btnThem").setAttribute("type", "button");
     }else{
-//        document.getElementById("divThongBao").innerHTML = "";
-//        alert("Đã thêm điểm thành công.");
         document.getElementById("btnThem").setAttribute("type", "submit");
         document.getElementById("btnThem").click();
     }

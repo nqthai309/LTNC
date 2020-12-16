@@ -7,11 +7,13 @@ package action;
 
 import bean.Khoa;
 import bean.SinhVien;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import dao.DAO;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -42,30 +44,36 @@ public class KhoaAction extends ActionSupport{
     
     @Override
     public String execute() throws Exception {
-        try {
-            listKhoas = new ArrayList<Khoa>();
-            rs = DAO.GetKhoa();
-            int i = 0;
-            if(rs != null){
-                while(rs.next()){
-                    i++;
-                    khoa = new Khoa();
-                    khoa.setMaKhoa(rs.getString(1));
-                    khoa.setTenKhoa(rs.getString(2));
-                    khoa.setDiaChi(rs.getString(3));
-                    khoa.setDienThoai(rs.getString(4));
+        Map session = ActionContext.getContext().getSession();
+        if(session.get("SessionLogin") != null){
+            try {
+                listKhoas = new ArrayList<Khoa>();
+                rs = DAO.GetKhoa();
+                int i = 0;
+                if(rs != null){
+                    while(rs.next()){
+                        i++;
+                        khoa = new Khoa();
+                        khoa.setMaKhoa(rs.getString(1));
+                        khoa.setTenKhoa(rs.getString(2));
+                        khoa.setDiaChi(rs.getString(3));
+                        khoa.setDienThoai(rs.getString(4));
                     
-                    listKhoas.add(khoa);
+                        listKhoas.add(khoa);
+                    }
                 }
-            }
-            if(i == 0)  noData = false;
-            else    noData = true;
+                if(i == 0)  noData = false;
+                else    noData = true;
             
-        } catch (Exception e) {
-            e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        
+            return "GetKhoa";
+        }else{
+            return "fail";
         }
         
-        return "GetKhoa";
     }
     
 }

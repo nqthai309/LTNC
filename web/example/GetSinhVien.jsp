@@ -27,6 +27,7 @@
         <link href="./home_style/vendors/coreui/chartjs/css/coreui-chartjs.css" rel="stylesheet">
     </head>
     <body>
+        
         <s:include value="menu.jsp"></s:include>
     <div class="c-wrapper c-fixed-components">
         <header class="c-header c-header-light c-header-fixed c-header-with-subheader">

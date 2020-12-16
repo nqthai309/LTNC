@@ -7,11 +7,13 @@ package action;
 
 import bean.Diem;
 import bean.SinhVien;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.sql.ResultSet;
 import java.util.List;
 import dao.DAO;
 import java.util.ArrayList;
+import java.util.Map;
 
 /**
  *
@@ -107,34 +109,43 @@ public class DiemAction extends ActionSupport{
     
     
     @Override
-    public String execute() throws Exception {try {
-            listDiem = new ArrayList<Diem>();
-            rs = DAO.GetDiem();
-            int i = 0;
-            if(rs != null){
-                while(rs.next()){
-                    i++;
-                    diem = new Diem();
-                    diem.setMaSV(rs.getString(1));
-                    diem.setMaMH(rs.getString(2));
-                    diem.setHocKy(rs.getInt(3));
-                    diem.setDiemLan1(rs.getInt(4));
-                    diem.setDiemlan2(rs.getInt(5));
+    public String execute() throws Exception {
+        Map session = ActionContext.getContext().getSession();
+        if(session.get("SessionLogin") != null){
+            try {
+                listDiem = new ArrayList<Diem>();
+                rs = DAO.GetDiem();
+                int i = 0;
+                if(rs != null){
+                    while(rs.next()){
+                        i++;
+                        diem = new Diem();
+                        diem.setMaSV(rs.getString(1));
+                        diem.setMaMH(rs.getString(2));
+                        diem.setHocKy(rs.getInt(3));
+                        diem.setDiemLan1(rs.getInt(4));
+                        diem.setDiemlan2(rs.getInt(5));
                     
-                    listDiem.add(diem);
+                        listDiem.add(diem);
+                    }
                 }
-            }
-            if(i == 0)  noData = false;
-            else    noData = true;
+                if(i == 0)  noData = false;
+                else    noData = true;
             
-        } catch (Exception e) {
-            e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        
+            return "GetDiem";
+        }else{
+            return "fail";
         }
         
-        return "GetDiem";
     }
     public String AddDiemSinhVien(){
-        maMocHocs = new ArrayList<String>();
+        Map session = ActionContext.getContext().getSession();
+        if(session.get("SessionLogin") != null){
+            maMocHocs = new ArrayList<String>();
         try {
             rs = DAO.GetMaMH();
             if(rs != null){
@@ -145,9 +156,15 @@ public class DiemAction extends ActionSupport{
         } catch (Exception e) {
         }
         return "AddDiemSinhVien";
+        }else{
+            return "fail";
+        }
+        
     }
     public String AddDiemSinhVienSubmit(){
-        try {
+        Map session = ActionContext.getContext().getSession();
+        if(session.get("SessionLogin") != null){
+            try {
             
             int result = DAO.InsertDiemSinhVien(maSV.trim(), maMH.trim(), Integer.parseInt(hocKy.trim())
                     , Integer.parseInt(diemLan1.trim()), Integer.parseInt(diemLan2.trim()));
@@ -157,6 +174,10 @@ public class DiemAction extends ActionSupport{
             e.printStackTrace();
             return null;
         }
+        }else{
+            return "fail";
+        }
+        
     }
     
 }

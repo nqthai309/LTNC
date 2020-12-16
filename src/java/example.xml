@@ -9,38 +9,48 @@
         
         <action name="loginAction" class="action.Login">
             <result name="success">home.jsp</result>
-            <result name="fail">fail.jsp</result>
+            <result name="fail" >../login.jsp</result>
         </action>
         <action name="homeAction" class="action.Home" >
             
         </action>
         <action name="listSinhVienAction" class="action.SinhVienAction" method="GetSinhVien">
             <result name="GetSinhVien">GetSinhVien.jsp</result>
+            <result name="fail" >../login.jsp</result>
+            
         </action>
         <action name="editSinhVienAction" class="action.SinhVienAction" method="EditSinhVien">
             <result name="editSinhVien">EditSinhVien.jsp</result>
+            <result name="fail" >../login.jsp</result>
         </action>
         <action name="editSinhVienSubmitAction" class="action.SinhVienAction" method="EditSinhVienSubmit">
             <result name="complete" type="chain">listSinhVienAction</result>
+            <result name="fail" >../login.jsp</result>
         </action>
         <action name="deleteSinhVienAction" class="action.SinhVienAction" method="DeleteSinhVien">
             <result name="complete" type="chain">listSinhVienAction</result>
+            <result name="fail" >../login.jsp</result>
         </action>
         <action name="addSinhVienAction" class="action.SinhVienAction" method="AddSinhVien">
             <result name="AddSinhVien">AddSinhVien.jsp</result>
+            <result name="fail" >../login.jsp</result>
         </action>
         <action name="addSinhVienSubmitAction" class="action.SinhVienAction" method="execute">
             <result name="complete" type="chain">listSinhVienAction</result>
+            <result name="fail" >../login.jsp</result>
         </action>
         <action name="addDiemSinhVienAction" class="action.DiemAction" method="AddDiemSinhVien">
             <result name="AddDiemSinhVien">AddDiem.jsp</result>
+            <result name="fail" >../login.jsp</result>
         </action>
         <action name="addDiemSinhVienSubmitAction" class="action.DiemAction" method="AddDiemSinhVienSubmit">
             <result name="complete" type="chain">listSinhVienAction</result>
+            <result name="fail" >../login.jsp</result>
         </action>
         
         <action name="timKiemSinhVienAction" class="action.SinhVienAction" method="TimKiemSinhVien">
             <result name="complete" >GetSinhVien.jsp</result>
+            <result name="fail" >../login.jsp</result>
         </action>
         
         
@@ -49,18 +59,21 @@
         </action>
 -->        <action name="listDiemAction" class="action.DiemAction">
             <result name="GetDiem">GetDiem.jsp</result>
+            <result name="fail" >../login.jsp</result>
         </action><!--
         <action name="addDiemAction" class="action.AddDiem">
             <result name="DanhSachSinhVien">GetSinhVien.jsp</result>
         </action>
 -->        <action name="listLopAction" class="action.LopAction">
             <result name="GetLop">GetLop.jsp</result>
+            <result name="fail" >../login.jsp</result>
         </action><!--
         <action name="addlopAction" class="action.addLop">
             <result name="DanhSachSinhVien">GetSinhVien.jsp</result>
         </action>
 -->        <action name="listKhoaAction" class="action.KhoaAction">
             <result name="GetKhoa">GetKhoa.jsp</result>
+            <result name="fail" >../login.jsp</result>
         </action><!--
         <action name="addKhoaAction" class="action.AddKhoa">
             <result name="DanhSachSinhVien">GetSinhVien.jsp</result>

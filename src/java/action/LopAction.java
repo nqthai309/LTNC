@@ -7,11 +7,13 @@ package action;
 
 import bean.Lop;
 import bean.SinhVien;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import dao.DAO;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -42,30 +44,36 @@ public class LopAction extends ActionSupport{
 
     @Override
     public String execute() throws Exception {
-        try {
-            listLops = new ArrayList<Lop>();
-            rs = DAO.GetLop();
-            int i = 0;
-            if(rs != null){
-                while(rs.next()){
-                    i++;
-                    lop = new Lop();
-                    lop.setMaLop(rs.getString(1));
-                    lop.setTenLop(rs.getString(2));
-                    lop.setMaKhoa(rs.getString(3));
-                    lop.setMaHeDT(rs.getString(4));
-                    lop.setMaKhoaHoc(rs.getString(5));
+        Map session = ActionContext.getContext().getSession();
+        if(session.get("SessionLogin") != null){
+            try {
+                listLops = new ArrayList<Lop>();
+                rs = DAO.GetLop();
+                int i = 0;
+                if(rs != null){
+                    while(rs.next()){
+                        i++;
+                        lop = new Lop();
+                        lop.setMaLop(rs.getString(1));
+                        lop.setTenLop(rs.getString(2));
+                        lop.setMaKhoa(rs.getString(3));
+                        lop.setMaHeDT(rs.getString(4));
+                        lop.setMaKhoaHoc(rs.getString(5));
                     
-                    listLops.add(lop);
+                        listLops.add(lop);
+                    }
                 }
-            }
-            if(i == 0)  noData = false;
-            else    noData = true;
+                if(i == 0)  noData = false;
+                else    noData = true;
             
-        } catch (Exception e) {
-            e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return "GetLop";
+        }else{
+            return "fail";
         }
-        return "GetLop";
+        
     }
     
 }

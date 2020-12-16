@@ -6,8 +6,10 @@
 package action;
 
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import dao.DAO;
+import java.util.Map;
 
 /**
  *
@@ -21,6 +23,8 @@ public class Login extends ActionSupport{
     public String execute() throws Exception {
         String result = DAO.CheckLogin(username, password);
         if(result.equals(username)){
+            Map session = ActionContext.getContext().getSession();
+            session.put("SessionLogin", username);
             return "success";
         }else{
             return "fail";
