@@ -27,6 +27,9 @@ public class SinhVienAction extends ActionSupport{
     private String maSV, tenSinhVien, gioiTinh, ngaySinh, queQuan, maLop;
     String submitType, textSearch;
 
+    
+    
+
     public String getTextSearch() {
         return textSearch;
     }
@@ -172,6 +175,7 @@ public class SinhVienAction extends ActionSupport{
         }
             return "GetSinhVien";
         }else{
+//            String linkRedirect = "http://localhost:8084/Struts2_QLSV/";
             return "fail";
         }
         
@@ -307,6 +311,7 @@ public class SinhVienAction extends ActionSupport{
             }
             return "";
         }else{
+            
             return "fail";
         }
         

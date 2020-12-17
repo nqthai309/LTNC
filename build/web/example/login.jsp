@@ -7,6 +7,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix = "s" uri = "/struts-tags"%>
 <!DOCTYPE html>
+
+
 <!--===============================================================================================-->	
 	<link rel="icon" type="image/png" href="./login_style/images/icons/favicon.ico"/>
 <!--===============================================================================================-->
@@ -36,7 +38,7 @@
 					<img src="./login_style/images/img-01.png" alt="IMG">
 				</div>
 
-                            <s:form action="example/loginAction" method="post" class="login100-form validate-form">
+                            <s:form action="loginAction" method="post" class="login100-form validate-form">
 					<span class="login100-form-title">
 						Member Login
 					</span>
