@@ -21,7 +21,7 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right pt-0">
                         <div class="dropdown-header bg-light py-2"><strong>Account</strong></div>
-                        <a class="dropdown-item" href="">
+                        <a class="dropdown-item" href="logoutAction">
                             <svg class="c-icon mr-2">
                                 <use xlink:href="#"></use>
                             </svg> Logout

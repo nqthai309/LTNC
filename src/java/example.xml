@@ -11,6 +11,10 @@
             <result name="success">home.jsp</result>
             <result name="fail" >login.jsp</result>
         </action>
+        <action name="logoutAction" class="action.Login" method="Logout">
+            <result name="success">login.jsp</result>
+            <result name="fail" >login.jsp</result>
+        </action>
         <action name="homeAction" class="action.Home" >
             
         </action>
@@ -78,6 +82,35 @@
         <action name="addKhoaAction" class="action.AddKhoa">
             <result name="DanhSachSinhVien">GetSinhVien.jsp</result>
         </action>-->
+        
+        <!--thái-->
+        
+        
+        
+        <!--hiếu-->
+            <!--code-->
+        
+        <!--Hiếu-->
+        
+        
+        
+        
+        
+        <!--Tùng-->
+            <!--code-->
+        
+        
+        <!--Tùng-->
+        
+        
+        
+        <!--Thắng-->
+            <!--code-->
+        
+        
+        
+        
+        <!--Thắng-->
     </package>
 </struts>
 

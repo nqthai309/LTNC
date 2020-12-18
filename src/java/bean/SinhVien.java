@@ -8,7 +8,10 @@ package bean;
 /**
  *
  * @author thai
+ * 
  */
+import java.util.Comparator;
+        
 public class SinhVien {
     private String maSV;
     private String tenSinhVien;
@@ -76,6 +79,41 @@ public class SinhVien {
     public void setMaLop(String maLop) {
         this.maLop = maLop;
     }
+    
+    public static Comparator<SinhVien> nameCompare = new Comparator<SinhVien>() {
+        @Override
+        public int compare(SinhVien o1, SinhVien o2) {
+            String[] data1 = o1.tenSinhVien.split("\\s");
+            String[] data2 = o2.tenSinhVien.split("\\s");
+            int value1 = data2[data2.length - 1].compareTo(data1[data1.length - 1]);
+            if(value1 == 0){
+                int value2 = data2[data2.length - 2].compareTo(data1[data1.length - 2]);
+                return value2;
+            }
+            return value1;
+        }
+    };
+    
+    public static Comparator<SinhVien> sexCompare = new Comparator<SinhVien>() {
+        @Override
+        public int compare(SinhVien o1, SinhVien o2) {
+            return o1.gioiTinh.compareTo(o2.gioiTinh);
+        }
+    };
+    
+    public static Comparator<SinhVien> gradeCompare = new Comparator<SinhVien>() {
+        @Override
+        public int compare(SinhVien o1, SinhVien o2) {
+            return o1.maLop.compareTo(o2.maLop);
+        }
+    };
+    
+    public static Comparator<SinhVien> addressCompare = new Comparator<SinhVien>() {
+        @Override
+        public int compare(SinhVien o1, SinhVien o2) {
+            return o1.queQuan.compareTo(o2.queQuan);
+        }
+    };
     
     
 }

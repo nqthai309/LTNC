@@ -30,6 +30,11 @@ public class Login extends ActionSupport{
             return "fail";
         }
     }
+    public String Logout(){
+        Map session = ActionContext.getContext().getSession();
+        session.remove("SessionLogin");
+        return "success";
+    }
     public String getUsername() {
         return username;
     }

@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.util.List;
 import dao.DAO;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Map;
 
 /**
@@ -25,7 +26,27 @@ public class SinhVienAction extends ActionSupport{
     private boolean noData = false;
     SinhVien sv = null;
     private String maSV, tenSinhVien, gioiTinh, ngaySinh, queQuan, maLop;
-    String submitType, textSearch;
+    String submitType, textSearch, radioButton;
+    int sum;
+
+    public int getSum() {
+        return sum;
+    }
+
+    public void setSum(int sum) {
+        this.sum = sum;
+    }
+    
+
+    public void setRadioButton(String radioButton) {
+        this.radioButton = radioButton;
+    }
+
+    
+    public String getRadioButton() {
+        return radioButton;
+    }
+    
 
     
     
@@ -166,6 +187,7 @@ public class SinhVienAction extends ActionSupport{
                     
                         sinhViens.add(sv);
                     }
+                    sum = sinhViens.size();
                 }
                 if(i == 0)  noData = false;
                 else    noData = true;
@@ -175,7 +197,6 @@ public class SinhVienAction extends ActionSupport{
         }
             return "GetSinhVien";
         }else{
-//            String linkRedirect = "http://localhost:8084/Struts2_QLSV/";
             return "fail";
         }
         
@@ -303,6 +324,11 @@ public class SinhVienAction extends ActionSupport{
                         sv.setMaLop(rs.getString(6).trim());
                         sinhViens.add(sv);
                     }
+                    if(radioButton.equals("sxten"))  Collections.sort(sinhViens, SinhVien.nameCompare);
+                    if(radioButton.equals("sxlop"))  Collections.sort(sinhViens, SinhVien.gradeCompare);
+                    if(radioButton.equals("sxgioitinh")) Collections.sort(sinhViens, SinhVien.sexCompare);
+                    if(radioButton.equals("sxquequan")) Collections.sort(sinhViens, SinhVien.addressCompare);
+                    sum = sinhViens.size();
                     return "complete";
                 }
             } catch (Exception e) {
