@@ -26,7 +26,7 @@
         <!-- Global site tag (gtag.js) - Google Analytics-->
         <link href="./home_style/vendors/coreui/chartjs/css/coreui-chartjs.css" rel="stylesheet">
     </head>
-    <body>
+    <body id="bodyID">
         
         <s:include value="menu.jsp"></s:include>
     <div class="c-wrapper c-fixed-components">
@@ -49,10 +49,37 @@
                     <s:form action="timKiemSinhVienAction" method="post">
                     <div style="display: flex">
                         
-                        <input class="form-control" id="timKiem" type="text" name="textSearch" placeholder="Tìm Kiếm theo tên  VD: Thái">
+                        <input class="form-control" id="timKiem" type="text" name="textSearch" placeholder="Tìm Kiếm theo tên  VD: Thái" value="<s:property value="textSearch"/>">
                         <button id="btnTimKiem" class="btn btn-sm btn-primary"  type="submit"> Search</button>
                         
                     </div>
+                    <div style="display: flex; margin-top: 8px">
+                        <input type="hidden" value="<s:property value="radioButton"/>" id="radioButtonValue"/>
+                        <input type="hidden" value="<s:property value="sum"/>" id="sum"/>
+                        <div style="display: flex">
+                            <input id="sxten" name="radioButton" style="margin-top: 4px" type="radio" value="sxten" checked=<s:property value="radioButton"/>==sxten?"checked":"unchecked" />
+                            <div style="padding-left: 6px">Sắp xếp theo tên</div>
+                            
+                        </div>
+                        <div style="display: flex; margin-left: 50px">
+                            <input id="sxlop" name="radioButton" style="margin-top: 4px" type="radio" value="sxlop"/>
+                            <div style="padding-left: 6px">Sắp xếp theo lớp</div>
+                        </div>
+                        <div style="display: flex; margin-left: 50px">
+                            <input id="sxgioitinh" name="radioButton" style="margin-top: 4px" type="radio" value="sxgioitinh"/>
+                            <div style="padding-left: 6px">Sắp xếp theo giới tính</div>
+                        </div>
+                        <div style="display: flex; margin-left: 50px">
+                            <input id="sxquequan" name="radioButton" style="margin-top: 4px" type="radio" value="sxquequan"/>
+                            <div style="padding-left: 6px">Sắp xếp theo quê quán</div>
+                        </div>
+                        <div style="display: flex; margin-left: 50px">
+                            <input id="sx" name="radioButton" style="margin-top: 4px" type="radio" value="sx" checked="checked"/>
+                            <div style="padding-left: 6px">Tất cả</div>
+                        </div>
+                    </div>
+                    
+                    
                     </s:form>
                    
                 </div>
@@ -72,15 +99,16 @@
                             </tr>
                         </thead>
                         <tbody>
+        
                             <s:iterator value="sinhViens">
                                 <tr>
-
+                                    
                                     <td><s:property value="tenSinhVien"/></td>
                                     <td><s:property value="gioiTinh"/></td>
                                     <td><s:property value="ngaySinh"/></td>
                                     <td><s:property value="queQuan"/></td>
                                     <td><s:property value="maLop"/></td>
-                                    
+      
                                     <td><a href="addDiemSinhVienAction.action?maSV=<s:property value="maSV"/>">Thêm điểm</a></td>
                                     <td><a href="editSinhVienAction.action?submitType=updatedata&maSV=<s:property value="maSV"/>">Sửa</a></td>
                                    
@@ -117,5 +145,6 @@
     <script src="./home_style/vendors/coreui/chartjs/js/coreui-chartjs.bundle.js"></script>
     <script src="./home_style/vendors/coreui/utils/js/coreui-utils.js"></script>
     <script src="./home_style/js/main.js"></script>
+    <script src="javascript/GetSinhVienJS.js" type="text/javascript"></script>
     </body>
 </html>
