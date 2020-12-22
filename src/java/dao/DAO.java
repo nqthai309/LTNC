@@ -244,4 +244,21 @@ public class DAO {
             return null;
         }
     }
+    public static int InsertLop(String maLop, String tenLop, String maKhoa,String maHeDT, String maKhoaHoc) throws SQLException{
+        
+        try {
+            String sql = "INSERT Lop VALUES ('"+maLop+"',N'"+tenLop+"',"
+                    + "'"+maKhoa+"' ,'"+maHeDT+"','"+maKhoaHoc+"') ";
+            PreparedStatement ps = getConnectDB().prepareStatement(sql);
+            return ps.executeUpdate();
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }finally{
+            if (getConnectDB() != null) {
+                getConnectDB().close();
+            }
+        }
+    }
 }

@@ -10,7 +10,7 @@ package dao;
  * @author thai
  */
 public class ConnectionString {
-    public static String url = "jdbc:sqlserver://127.0.0.1:1433;databaseName=LTNC";
+    public static String url = "jdbc:sqlserver://localhost:1436;databaseName=LTNC";
     public static String user = "sa";
     public static String pass = "123";
 }
