@@ -42,6 +42,7 @@
         <action name="addSinhVienSubmitAction" class="action.SinhVienAction" method="execute">
             <result name="complete" type="chain">listSinhVienAction</result>
             <result name="fail" type="redirectAction">loginAction</result>
+            <result name="ex" type="chain">addSinhVienAction</result>
         </action>
         <action name="addDiemSinhVienAction" class="action.DiemAction" method="AddDiemSinhVien">
             <result name="AddDiemSinhVien">AddDiem.jsp</result>

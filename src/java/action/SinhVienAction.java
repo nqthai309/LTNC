@@ -24,11 +24,23 @@ public class SinhVienAction extends ActionSupport{
     List<SinhVien> sinhViens = null;
     List<String> maLops = null;
     private boolean noData = false;
+    private boolean checkError = false;
     SinhVien sv = null;
     private String maSV, tenSinhVien, gioiTinh, ngaySinh, queQuan, maLop;
     String submitType, textSearch, radioButton;
     int sum;
 
+    public boolean isCheckError() {
+        return checkError;
+    }
+
+    public void setCheckError(boolean checkError) {
+        this.checkError = checkError;
+    }
+    
+    
+
+ 
     public int getSum() {
         return sum;
     }
@@ -151,11 +163,17 @@ public class SinhVienAction extends ActionSupport{
         Map session = ActionContext.getContext().getSession();
         if(session.get("SessionLogin") != null){
             try {
-                int result = DAO.InsertSinhVien(maSV.trim(), tenSinhVien.trim(), gioiTinh.trim(), ngaySinh.trim(), queQuan.trim(), maLop.trim());
-                if(result > 0){
-                    return "complete";
+                ResultSet rs = DAO.GetSinhVienByID(maSV.trim());
+                if(!(rs.next())){
+                    int result = DAO.InsertSinhVien(maSV.trim(), tenSinhVien.trim(), gioiTinh.trim(), ngaySinh.trim(), queQuan.trim(), maLop.trim());
+                    if(result > 0){
+                        return "complete";
+                    }else{
+                        return "fail";
+                    }
                 }else{
-                    return "fail";
+                    checkError = true;
+                    return "ex";
                 }
             } catch (Exception e) {
                 e.printStackTrace();

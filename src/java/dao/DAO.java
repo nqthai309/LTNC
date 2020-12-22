@@ -47,6 +47,17 @@ public class DAO {
         }
         return "error";
     }
+    public static ResultSet GetSinhVienByID(String maSV){
+        ResultSet rs = null;
+        try {
+            String sql = "select * from SinhVien where MaSV = "+maSV;
+            PreparedStatement stm = getConnectDB().prepareStatement(sql);
+            rs = stm.executeQuery();
+            return rs;
+        } catch (Exception e) {
+            return null;
+        }
+    }
     public static ResultSet GetSinhVien() throws SQLException{
         ResultSet rs = null;
         try {
@@ -363,4 +374,7 @@ public class DAO {
     }
     
 //Hiếu.!!!
+    
+    
+
 }
