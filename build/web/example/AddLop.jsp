@@ -36,26 +36,26 @@
             <main class="c-main">
                 <div class="container-fluid">
                     <div class="fade-in">
-                        <!--body-->
-                        <div class="card">
-    <div class="card-header"><strong>Basic Form</strong> Elements</div>
+<!--body-->
+<div class="card">
+    <div class="card-header"><strong>Add Class Form</strong> Elements</div>
     <div class="card-body">
-        <s:form class="form-horizontal" action="addSinhVienSubmitAction" method="post" enctype="multipart/form-data">
+        <s:form class="form-horizontal" action="addLopSubmitAction" method="post" enctype="multipart/form-data">
 
             <div class="form-group row">
                 <label class="col-md-3 col-form-label" for="text-input">Mã Lớp</label>
                 <div class="col-md-9">
-                    <input class="form-control" id="maSV" type="text" name="maLop" placeholder="Mã Lớp">
+                    <input class="form-control" id="maLop" type="text" name="maLop" placeholder="Mã Lớp">
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label" for="text-input">Tên Lớp</label>
                 <div class="col-md-9">
-                    <input class="form-control" id="tenSinhVien" type="text" name="tenLop" placeholder="Tên Lớp">
+                    <input class="form-control" id="tenLop" type="text" name="tenLop" placeholder="Tên Lớp">
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-md-3 col-form-label" for="email-input">Mã Khoa</label>
+                <label class="col-md-3 col-form-label" for="password">Mã Khoa</label>
                 <div class="col-md-9">
                     <select class="form-control" id="maKhoa" name="maKhoa">
                     <s:iterator value="maKhoas">
@@ -65,7 +65,7 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-md-3 col-form-label" for="email-input">Mã Hệ Đào Tạo</label>
+                <label class="col-md-3 col-form-label" for="password">Mã Hệ Đào Tạo</label>
                 <div class="col-md-9">
                     <select class="form-control" id="maHeDT" name="maHeDT">
                     <s:iterator value="maHeDTs">
@@ -75,7 +75,7 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-md-3 col-form-label" for="address">Mã Khóa Học</label>
+                <label class="col-md-3 col-form-label" for="password">Mã Khóa Học</label>
                 <div class="col-md-9">
                     <select class="form-control" id="maKhoaHoc" name="maKhoaHoc">
                     <s:iterator value="maKhoaHocs">
@@ -88,7 +88,7 @@
             
             <div style="color:red; font-size:20px; text-align:center" id="divThongBao"></div>
             <div class="card-footer">
-                <button id="btnThem" class="btn btn-sm btn-primary" type="submit"> Submit</button>
+                <button id="btnThem" class="btn btn-sm btn-primary" type="submit">Submit</button>
             </div>
         </s:form>
     </div>
@@ -112,5 +112,6 @@
     <script src="./home_style/vendors/coreui/chartjs/js/coreui-chartjs.bundle.js"></script>
     <script src="./home_style/vendors/coreui/utils/js/coreui-utils.js"></script>
     <script src="./home_style/js/main.js"></script>
+    <script src="javascript/AddLopJS.js" type="text/javascript"></script>
     </body>
 </html>

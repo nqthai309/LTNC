@@ -49,7 +49,7 @@
                     </svg> Lớp
                 </a>
                 <ul class="c-sidebar-nav-dropdown-items">
-                    <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="home.jsp"><span class="c-sidebar-nav-icon"></span> Thêm mới</a></li>
+                    <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="addLopAction"><span class="c-sidebar-nav-icon"></span> Thêm mới</a></li>
                     <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="listLopAction"><span class="c-sidebar-nav-icon"></span> Danh sách</a></li>
                 </ul>
             </li>

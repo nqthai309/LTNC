@@ -150,7 +150,7 @@ public class DAO {
             PreparedStatement ps = getConnectDB().prepareStatement(sql);
             rs = ps.executeQuery();
             return rs;
-            
+
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -161,13 +161,13 @@ public class DAO {
         }
     }
     public static int InsertSinhVien(String maSV, String tenSinhVien, String gioiTinh,String ngaySinh, String queQuan, String maLop) throws SQLException{
-        
+
         try {
             String sql = "INSERT SinhVien VALUES ('"+maSV+"',N'"+tenSinhVien+"',"
                     + "'"+gioiTinh+"' ,'"+ngaySinh+"','"+queQuan+"','"+maLop+"') ";
             PreparedStatement ps = getConnectDB().prepareStatement(sql);
             return ps.executeUpdate();
-            
+
         } catch (Exception e) {
             e.printStackTrace();
             return 0;
@@ -200,7 +200,7 @@ public class DAO {
             PreparedStatement ps = getConnectDB().prepareStatement(sql);
             i = ps.executeUpdate();
             return i;
-            
+
         } catch (Exception e) {
             e.printStackTrace();
             return 0;
@@ -238,20 +238,32 @@ public class DAO {
             PreparedStatement ps = getConnectDB().prepareStatement(sql);
             rs = ps.executeQuery();
             return rs;
-            
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+//Hiếu
+    public static ResultSet findLopByMaLop(String maLop){
+        ResultSet rs = null;
+        try {
+            String sql = "Select * from Lop where MaLop = '"+maLop+"'";
+            PreparedStatement ps = getConnectDB().prepareStatement(sql);
+            rs = ps.executeQuery();
+            return rs;
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
     public static int InsertLop(String maLop, String tenLop, String maKhoa,String maHeDT, String maKhoaHoc) throws SQLException{
-        
-        try {
-            String sql = "INSERT Lop VALUES ('"+maLop+"',N'"+tenLop+"',"
-                    + "'"+maKhoa+"' ,'"+maHeDT+"','"+maKhoaHoc+"') ";
+
+        try {  
+            String sql = "INSERT dbo.Lop VALUES  ( '"+maLop+"' ,N'"+tenLop+"' , '"+maKhoa+"' , '"+maHeDT+"' ,'"+maKhoaHoc+"')";
             PreparedStatement ps = getConnectDB().prepareStatement(sql);
             return ps.executeUpdate();
-            
+
         } catch (Exception e) {
             e.printStackTrace();
             return 0;
@@ -261,4 +273,94 @@ public class DAO {
             }
         }
     }
+    public static ResultSet GetMaKhoa() throws SQLException {
+        ResultSet rs = null;
+        try {
+            String sql = "Select MaKhoa from Khoa";
+            PreparedStatement ps = getConnectDB().prepareStatement(sql);
+            rs = ps.executeQuery();
+            return rs;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }finally{
+            if (getConnectDB() != null) {
+                getConnectDB().close();
+            }
+        }
+    }
+    public static ResultSet GetMaHeDT() throws SQLException {
+        ResultSet rs = null;
+        try {
+            String sql = "Select MaHeDT from HeDT";
+            PreparedStatement ps = getConnectDB().prepareStatement(sql);
+            rs = ps.executeQuery();
+            return rs;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }finally{
+            if (getConnectDB() != null) {
+                getConnectDB().close();
+            }
+        }
+    }
+    public static ResultSet GetMaKhoaHoc() throws SQLException {
+        ResultSet rs = null;
+        try {
+            String sql = "Select MaKhoaHoc from KhoaHoc";
+            PreparedStatement ps = getConnectDB().prepareStatement(sql);
+            rs = ps.executeQuery();
+            return rs;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }finally{
+            if (getConnectDB() != null) {
+                getConnectDB().close();
+            }
+        }
+    }
+        public static int UpdateLop(String maLop, String tenLop, String maKhoa,String maHeDT, String maKhoaHoc) throws SQLException{
+        int i=0;
+        try {
+            String sql = "UPDATE dbo.Lop SET TenLop = N'"+tenLop+"', MaKhoa = '"+maKhoa+"', MaHeDT = '"+maHeDT+"', MaKhoaHoc = '"+maKhoaHoc+"' WHERE MaLop = '"+maLop+"'";
+            PreparedStatement ps = getConnectDB().prepareStatement(sql);
+            i = ps.executeUpdate();
+            return i;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        } finally {
+            if (getConnectDB() != null) {
+		getConnectDB().close();
+            }
+        }
+    }
+
+    public static int DeleteLop(String maLop){
+        try {
+            String sql = "delete Lop where MaLop = '"+maLop+"'";
+            PreparedStatement ps = getConnectDB().prepareStatement(sql);
+            return ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+    
+    public static ResultSet TimKiemLop(String textSearch){
+        ResultSet rs = null;
+        try {
+            String sql = "Select * from Lop where TenLop like N'%"+textSearch+"%' ";
+            PreparedStatement ps = getConnectDB().prepareStatement(sql);
+            rs = ps.executeQuery();
+            return rs;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+//Hiếu.!!!
 }

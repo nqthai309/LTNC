@@ -1,7 +1,7 @@
 <%-- 
-    Document   : AddLop
-    Created on : Nov 27, 2020, 4:50:23 PM
-    Author     : thai
+    Document   : EditLop
+    Created on : Dec 18, 2020, 11:55:50 PM
+    Author     : VanHieu
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -19,7 +19,7 @@
         
     
 
-        <title>Thêm Lớp</title>
+        <title>Sửa Lớp</title>
 
         <!-- Main styles for this application-->
         <link href="./home_style/css/style.css" rel="stylesheet">
@@ -36,62 +36,77 @@
             <main class="c-main">
                 <div class="container-fluid">
                     <div class="fade-in">
-<!--body-->
-<div class="card">
-    <div class="card-header"><strong>Add Class Form</strong> Elements</div>
-    <div class="card-body">
-        <s:form class="form-horizontal" action="addLopSubmitAction" method="post" enctype="multipart/form-data">
-
-            <div class="form-group row">
+                        <!--body-->
+                        <div class="card">
+    <div class="card-header"><strong>Basic Form</strong> Elements</div>
+    
+        <s:form class="form-horizontal" action="editLopSubmitAction" method="post" enctype="multipart/form-data">
+            <s:if test="noData==true">
+                <s:iterator value="listLops">
+                    <div class="form-group row">
                 <label class="col-md-3 col-form-label" for="text-input">Mã Lớp</label>
                 <div class="col-md-9">
-                    <input class="form-control" id="maLop" type="text" name="maLop" placeholder="Mã Lớp">
+                    <input class="form-control" readonly value="<s:property value="maLop"/>" id="maLop" type="text" name="maLop" placeholder="Mã Lớp">
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label" for="text-input">Tên Lớp</label>
                 <div class="col-md-9">
-                    <input class="form-control" id="tenLop" type="text" name="tenLop" placeholder="Tên Lớp">
+                    <input class="form-control" value="<s:property value="tenLop"/>" id="tenLop" type="text" name="tenLop" placeholder="Tên Lớp">
                 </div>
             </div>
+                
+            <input class="form-control" value="<s:property value="maKhoa"/>" type="hidden" id="maKhoa" >
             <div class="form-group row">
                 <label class="col-md-3 col-form-label" for="password">Mã Khoa</label>
                 <div class="col-md-9">
-                    <select class="form-control" id="maKhoa" name="maKhoa">
+                    <select class="form-control" id="selectMaKhoa" name="maKhoa">
                     <s:iterator value="maKhoas">
                         <option value="<s:property/>"><s:property/></option>
                     </s:iterator>
                     </select>
                 </div>
             </div>
+            
+            <input class="form-control" value="<s:property value="maHeDT"/>" type="hidden" id="maHeDT" >
             <div class="form-group row">
                 <label class="col-md-3 col-form-label" for="password">Mã Hệ Đào Tạo</label>
                 <div class="col-md-9">
-                    <select class="form-control" id="maHeDT" name="maHeDT">
+                    <select class="form-control" id="selectMaHeDT" name="maHeDT">
                     <s:iterator value="maHeDTs">
                         <option value="<s:property/>"><s:property/></option>
                     </s:iterator>
                     </select>
                 </div>
             </div>
+            
+            <input class="form-control" value="<s:property value="maKhoaHoc"/>" type="hidden" id="maKhoaHoc" >
             <div class="form-group row">
                 <label class="col-md-3 col-form-label" for="password">Mã Khóa Học</label>
                 <div class="col-md-9">
-                    <select class="form-control" id="maKhoaHoc" name="maKhoaHoc">
+                    <select class="form-control" id="selectMaKhoaHoc" name="maKhoaHoc">
                     <s:iterator value="maKhoaHocs">
                         <option value="<s:property/>"><s:property/></option>
                     </s:iterator>
                     </select>
+                    
+                    
                 </div>
             </div>
-
+            
+            
+                    </s:iterator>
             
             <div style="color:red; font-size:20px; text-align:center" id="divThongBao"></div>
             <div class="card-footer">
                 <button id="btnThem" class="btn btn-sm btn-primary" type="submit">Submit</button>
             </div>
+            </s:if>
+            <s:else>
+                <div style="color: red;">No Data Found.</div>
+            </s:else>
         </s:form>
-    </div>
+    
 </div>
                         <!--body-->
                         
@@ -112,6 +127,6 @@
     <script src="./home_style/vendors/coreui/chartjs/js/coreui-chartjs.bundle.js"></script>
     <script src="./home_style/vendors/coreui/utils/js/coreui-utils.js"></script>
     <script src="./home_style/js/main.js"></script>
-    <script src="javascript/AddLopJS.js" type="text/javascript"></script>
+    <script src="javascript/EditLopJS.js" type="text/javascript"></script>
     </body>
 </html>

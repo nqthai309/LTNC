@@ -5,6 +5,8 @@
  */
 package bean;
 
+import java.util.Comparator;
+
 /**
  *
  * @author thai
@@ -15,6 +17,18 @@ public class Lop {
     private String maKhoa;
     private String maHeDT;
     private String maKhoaHoc;
+
+    public Lop() {
+    }
+
+    public Lop(String maLop, String tenLop, String maKhoa, String maHeDT, String maKhoaHoc) {
+        this.maLop = maLop;
+        this.tenLop = tenLop;
+        this.maKhoa = maKhoa;
+        this.maHeDT = maHeDT;
+        this.maKhoaHoc = maKhoaHoc;
+    }
+    
 
     public String getMaLop() {
         return maLop;
@@ -55,7 +69,32 @@ public class Lop {
     public void setMaKhoaHoc(String maKhoaHoc) {
         this.maKhoaHoc = maKhoaHoc;
     }
+
+    public static Comparator<Lop> nameCompare = new Comparator<Lop>() {
+        @Override
+        public int compare(Lop o1, Lop o2) {
+            return o1.tenLop.compareTo(o2.tenLop);
+        }
+    };
     
+    public static Comparator<Lop> maKhoaCompare = new Comparator<Lop>() {
+        @Override
+        public int compare(Lop o1, Lop o2) {
+            return o1.maKhoa.compareTo(o2.maKhoa);
+        }
+    };
     
-     
+    public static Comparator<Lop> maHeDTCompare = new Comparator<Lop>() {
+        @Override
+        public int compare(Lop o1, Lop o2) {
+            return o1.maHeDT.compareTo(o2.maHeDT);
+        }
+    };
+    
+    public static Comparator<Lop> maKhoaHocCompare = new Comparator<Lop>() {
+        @Override
+        public int compare(Lop o1, Lop o2) {
+            return o1.maKhoaHoc.compareTo(o2.maKhoaHoc);
+        }
+    };
 }

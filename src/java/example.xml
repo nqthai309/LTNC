@@ -68,10 +68,11 @@
         <action name="addDiemAction" class="action.AddDiem">
             <result name="DanhSachSinhVien">GetSinhVien.jsp</result>
         </action>
--->        <action name="listLopAction" class="action.LopAction">
-            <result name="GetLop">GetLop.jsp</result>
+-->        
+<!--        <action name="listLopAction" class="action.LopAction">
+            <result name="complete">GetLop.jsp</result>
             <result name="fail" type="redirectAction">loginAction</result>
-        </action><!--
+        </action>
         <action name="addlopAction" class="action.addLop">
             <result name="DanhSachSinhVien">GetSinhVien.jsp</result>
         </action>
@@ -88,8 +89,34 @@
         
         
         <!--hiếu-->
-            <!--code-->
-        
+        <action name="listLopAction" class="action.LopAction" method="GetLop">
+            <result name="GetLop">GetLop.jsp</result>
+            <result name="fail" type="redirectAction">loginAction</result>
+        </action>
+        <action name="addLopAction" class="action.LopAction" method="AddLop">
+            <result name="AddLop">AddLop.jsp</result>
+            <result name="fail" type="redirectAction">loginAction</result>
+        </action>
+        <action name="addLopSubmitAction" class="action.LopAction" method="execute">
+            <result name="complete" type="chain">listLopAction</result>
+            <result name="fail" type="redirectAction">loginAction</result>
+        </action>
+        <action name="editLopAction" class="action.LopAction" method="EditLop">
+            <result name="editLop">EditLop.jsp</result>
+            <result name="fail" type="redirectAction">loginAction</result>
+        </action>
+        <action name="editLopSubmitAction" class="action.LopAction" method="EditLopSubmit">
+            <result name="complete" type="chain">listLopAction</result>
+            <result name="fail" type="redirectAction">loginAction</result>
+        </action>
+        <action name="deleteLopAction" class="action.LopAction" method="DeleteLop">
+            <result name="complete" type="chain">listLopAction</result>
+            <result name="fail" type="redirectAction">loginAction</result>
+        </action>
+        <action name="timKiemLopAction" class="action.LopAction" method="TimKiemLop">
+            <result name="complete" >GetLop.jsp</result>
+            <result name="fail" type="redirectAction">loginAction</result>
+        </action>
         <!--Hiếu-->
         
         
