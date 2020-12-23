@@ -101,6 +101,7 @@
         <action name="addLopSubmitAction" class="action.LopAction" method="execute">
             <result name="complete" type="chain">listLopAction</result>
             <result name="fail" type="redirectAction">loginAction</result>
+            <result name="ex" type="chain">addLopAction</result>
         </action>
         <action name="editLopAction" class="action.LopAction" method="EditLop">
             <result name="editLop">EditLop.jsp</result>

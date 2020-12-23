@@ -26,7 +26,7 @@
         <!-- Global site tag (gtag.js) - Google Analytics-->
         <link href="./home_style/vendors/coreui/chartjs/css/coreui-chartjs.css" rel="stylesheet">
     </head>
-    <body>
+    <body id = "bodyIDLop">
         <s:include value="menu.jsp"></s:include>
     <div class="c-wrapper c-fixed-components">
         <header class="c-header c-header-light c-header-fixed c-header-with-subheader">
@@ -85,8 +85,7 @@
                 </div>
             </div>
 
-            
-            <div style="color:red; font-size:20px; text-align:center" id="divThongBao"></div>
+            <input type="hidden"  id="divThongBao" value="<s:property value="checkError" />"/>
             <div class="card-footer">
                 <button id="btnThem" class="btn btn-sm btn-primary" type="submit">Submit</button>
             </div>
@@ -113,5 +112,6 @@
     <script src="./home_style/vendors/coreui/utils/js/coreui-utils.js"></script>
     <script src="./home_style/js/main.js"></script>
     <script src="javascript/AddLopJS.js" type="text/javascript"></script>
+    <script src="javascript/AddLopER_JS.js" type="text/javascript"></script>
     </body>
 </html>

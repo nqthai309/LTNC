@@ -26,6 +26,15 @@ public class LopAction extends ActionSupport{
     ResultSet rs2 = null;
     List<Lop> listLops = null;
     private boolean noData = false;
+    private boolean checkError = false;
+
+    public boolean isCheckError() {
+        return checkError;
+    }
+
+    public void setCheckError(boolean checkError) {
+        this.checkError = checkError;
+    }
     Lop lop = null;
     private String maLop, tenLop, maKhoa, maHeDT, maKhoaHoc;
     String submitType,textSearch,radioButton;
@@ -168,17 +177,23 @@ public class LopAction extends ActionSupport{
         Map session = ActionContext.getContext().getSession();
         if(session.get("SessionLogin") != null){
             try {
-                int result = DAO.InsertLop(maLop.trim(), tenLop.trim(), maKhoa.trim(), maHeDT.trim(), maKhoaHoc.trim());
-                if(result > 0){
-                    return "complete";
+                ResultSet rs = DAO.findLopByMaLop(maLop.trim());
+                if(!(rs.next())){
+                    int result = DAO.InsertLop(maLop.trim(), tenLop.trim(), maKhoa.trim(), maHeDT.trim(), maKhoaHoc.trim());
+                    if(result > 0){
+                        return "complete";
+                    }else{
+                        return "fail";
+                    }
                 }else{
-                    return "fail";
+                    checkError = true;
+                    return "ex";
                 }
             } catch (Exception e) {
                 e.printStackTrace();
                 return null;
             } 
-        }else{
+            }else{
             return "fail";
         }
     }
