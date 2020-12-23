@@ -120,18 +120,26 @@
             <result name="fail" type="redirectAction">loginAction</result>
         </action>
         <!--Hiếu-->
-        
-        
-        
-        
-        
         <!--Tùng-->
             <!--code-->
-        
+        <action name="editDiemAction" class="action.DiemAction" method="EditDiem">
+            <result name="editDiem">EditDiem.jsp</result>
+            <result name="fail" type="redirectAction">loginAction</result>
+        </action>
+        <action name="editDiemSubmitAction" class="action.DiemAction" method="EditDiemSubmit">
+            <result name="complete" type="chain">listDiemAction</result>
+            <result name="fail" type="redirectAction">loginAction</result>
+        </action>
+        <action name="deleteDiemAction" class="action.DiemAction" method="DeleteDiem">
+            <result name="complete" type="chain">listDiemAction</result>
+            <result name="fail" type="redirectAction">loginAction</result>
+        </action>
+        <action name="timKiemDiemAction" class="action.DiemAction" method="TimKiemDiem">
+            <result name="complete" >GetDiem.jsp</result>
+            <result name="fail" type="redirectAction">loginAction</result>
+        </action>
         
         <!--Tùng-->
-
-        
         <!--Thắng-->
             <!--code-->
         <action name="listKhoaAction" class="action.KhoaAction" method="GetKhoa">
