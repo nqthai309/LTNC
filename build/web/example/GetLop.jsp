@@ -52,6 +52,7 @@
                     </div>
                     <div style="display: flex; margin-top: 8px">
                         <input type="hidden" value="<s:property value="radioButton"/>" id="radioButtonValue"/>
+                        <input type="hidden" value="<s:property value="checkErrorDelete"/>" id="checkErrorDelete"/>
                         <input type="hidden" value="<s:property value="sum"/>" id="sum"/>
                         <div style="display: flex">
                             <input id="sxten" name="radioButton" style="margin-top: 4px" type="radio" value="sxten" checked=<s:property value="radioButton"/>==sxten?"checked":"unchecked" />

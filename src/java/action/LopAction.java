@@ -27,7 +27,17 @@ public class LopAction extends ActionSupport{
     List<Lop> listLops = null;
     private boolean noData = false;
     private boolean checkError = false;
+    private boolean checkErrorDelete = false;
 
+    public boolean isCheckErrorDelete() {
+        return checkErrorDelete;
+    }
+
+    public void setCheckErrorDelete(boolean checkErrorDelete) {
+        this.checkErrorDelete = checkErrorDelete;
+    }
+    
+    
     public boolean isCheckError() {
         return checkError;
     }
@@ -340,9 +350,16 @@ public class LopAction extends ActionSupport{
         if(session.get("SessionLogin") != null){
             try {
                 if(submitType.equals("deletedata")){
-                    int result = DAO.DeleteLop(maLop); 
-                    if(result > 0) return "complete";
-                    else return "fail";
+                    ResultSet rs = DAO.GetSinhVienFromLopByID(maLop.trim());
+                    if(!(rs.next())){
+                        int result = DAO.DeleteLop(maLop); 
+                        if(result > 0) return "complete";
+                        else return "fail";
+                    }else{
+                        checkErrorDelete = true;
+                        return "ex";
+                    }
+                    
                 }
             } catch (Exception e) {
                 e.printStackTrace();

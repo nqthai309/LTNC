@@ -2,6 +2,8 @@ document.getElementById("bodyIDLop").onload = function() {OnLoadBody()};
 
 function OnLoadBody(){
     var radionButtonValue = document.getElementById("radioButtonValue").value;
+    var checkErrorDelete = document.getElementById("checkErrorDelete").value;
+    
     var item = ["sxten", "sxkhoa", "sxhedt", "sxkhoahoc", "sx"];
     item.forEach(myFunction);
     
@@ -10,5 +12,9 @@ function OnLoadBody(){
         if(it == radionButtonValue){
             document.getElementById(item).checked = true;
         }
+    }
+    
+    if(checkErrorDelete == "true"){
+        alert("Không được phép xoá Lớp còn chứa sinh viên ");
     }
 }

@@ -114,6 +114,7 @@
         <action name="deleteLopAction" class="action.LopAction" method="DeleteLop">
             <result name="complete" type="chain">listLopAction</result>
             <result name="fail" type="redirectAction">loginAction</result>
+            <result name="ex" type="chain">listLopAction</result>
         </action>
         <action name="timKiemLopAction" class="action.LopAction" method="TimKiemLop">
             <result name="complete" >GetLop.jsp</result>
@@ -166,6 +167,7 @@
         <action name="deleteKhoaAction" class="action.KhoaAction" method="DeleteKhoa">
             <result name="complete" type="chain">listKhoaAction</result>
             <result name="fail" type="redirectAction">loginAction</result>
+            <result name="ex" type="chain">listKhoaAction</result>
         </action>
         <action name="timKiemKhoaAction" class="action.KhoaAction" method="TimKiemKhoa">
             <result name="complete">GetKhoa.jsp</result>

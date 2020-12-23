@@ -6,6 +6,7 @@
 package dao;
 
 
+import com.opensymphony.xwork2.Result;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -207,6 +208,10 @@ public class DAO {
     }
     public static int DeleteSinhVien(String maSV){
         try {
+            String sql_2 = "delete Diem where MaSV = '"+maSV+"'";
+            PreparedStatement ps2 = getConnectDB().prepareStatement(sql_2);
+            ps2.executeUpdate();
+            
             String sql = "delete SinhVien where MaSV = '"+maSV+"'";
             PreparedStatement ps = getConnectDB().prepareStatement(sql);
             return ps.executeUpdate();
@@ -240,6 +245,18 @@ public class DAO {
         }
     }
 //Hiếu
+    public static ResultSet GetSinhVienFromLopByID(String MaLop){
+        ResultSet rs = null;
+        try {
+            String sql = "Select * from SinhVien where MaLop = '"+MaLop+"'";
+            PreparedStatement stm = getConnectDB().prepareStatement(sql);
+            rs = stm.executeQuery();
+            return rs;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
     public static ResultSet findLopByMaLop(String maLop){
         ResultSet rs = null;
         try {
@@ -467,8 +484,8 @@ public class DAO {
     {
         int i = 0;
         try {
-            String sql = "UPDATE Khoa SET TenKhoa = '"+tenKhoa.trim()+"', "
-                         + "DiaChi = '"+diaChi.trim()+"', DienThoai = '"+dienThoai.trim()+"' \n" +
+            String sql = "UPDATE Khoa SET TenKhoa = N'"+tenKhoa.trim()+"', "
+                         + "DiaChi = N'"+diaChi.trim()+"', DienThoai = '"+dienThoai.trim()+"' \n" +
                          "WHERE MaKhoa = '"+maKhoa+"'";
             PreparedStatement ps = getConnectDB().prepareStatement(sql);
             i =  ps.executeUpdate();
@@ -485,7 +502,7 @@ public class DAO {
     
     public static int DeleteKhoa (String maKhoa){
         try{
-            String sql = "DELETE dbo.Khoa WHERE MaKhoa = '"+maKhoa+"'";
+            String sql = "DELETE dbo.Khoa WHERE MaKhoa = '"+maKhoa+"' ";
             PreparedStatement ps = getConnectDB().prepareStatement(sql);
             return ps.executeUpdate();
         }catch(Exception e){
@@ -502,6 +519,18 @@ public class DAO {
             rs = ps.executeQuery();
             return rs;
         }catch(Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+    public static ResultSet GetLopFromKhoaByID(String MaKhoa){
+        ResultSet rs = null;
+        try {
+            String sql = "select * from Lop where MaKhoa = '"+MaKhoa+"'";
+            PreparedStatement stm = getConnectDB().prepareStatement(sql);
+            rs = stm.executeQuery();
+            return rs;
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }

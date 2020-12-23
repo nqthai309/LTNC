@@ -25,8 +25,18 @@ public class KhoaAction extends ActionSupport{
     List<Khoa> listKhoas = null;
     private boolean noData = false;
     private boolean checkError = false;
+    private boolean checkErrorDelete = false;
     Khoa khoa = null;
     String submitType, textSearch, radioButton;
+
+    public boolean isCheckErrorDelete() {
+        return checkErrorDelete;
+    }
+
+    public void setCheckErrorDelete(boolean checkErrorDelete) {
+        this.checkErrorDelete = checkErrorDelete;
+    }
+    
     
     
     public void setCheckError(boolean checkError) {
@@ -249,9 +259,16 @@ public class KhoaAction extends ActionSupport{
         if(session.get("SessionLogin") != null){
         try {
             if(submitType.equals("deletedata")){
-                int result = DAO.DeleteKhoa(maKhoa);
-                if(result > 0) return "complete";
-                else return "fail";
+                ResultSet rs = DAO.GetLopFromKhoaByID(maKhoa.trim());
+                if(!(rs.next())){
+                    int result = DAO.DeleteKhoa(maKhoa);
+                    if(result > 0) return "complete";
+                    else return "fail";
+                }else{
+                    checkErrorDelete = true;
+                    return "ex";
+                }
+                
             }
         }catch(Exception e){
             e.printStackTrace();

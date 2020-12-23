@@ -49,12 +49,13 @@
                     <s:form action="timKiemKhoaAction" method="post">
                     <div style="display: flex">
                         
-                        <input class="form-control" id="timKiem" type="text" name="textSearch" placeholder="Tìm Kiếm theo tên Khoa  VD: Công Nghệ Thông Tin" value="<s:property value="textSearch"/>">
+                        <input class="form-control" id="timKiem" type="text" name="textSearch" placeholder="Tìm Kiếm theo mã Khoa  VD: DT" value="<s:property value="textSearch"/>">
                         <button id="btnTimKiem" class="btn btn-sm btn-primary"  type="submit"> Search</button>
                         
                     </div>
                     <div style="display: flex; margin-top: 8px">
                         <input type="hidden" value="<s:property value="radioButton"/>" id="radioButtonValue"/>
+                        <input type="hidden" value="<s:property value="checkErrorDelete"/>" id="checkErrorDelete"/>
                         <input type="hidden" value="<s:property value="sum"/>" id="sum"/>
                         <div style="display: flex">
                             <input id="sxmakhoa" name="radioButton" style="margin-top: 4px" type="radio" value="sxmakhoa" checked="checked" />
@@ -122,12 +123,10 @@
             </footer>
         </div>
     </div>
-    <!-- CoreUI and necessary plugins-->
     <script src="./home_style/vendors/coreui/coreui/js/coreui.bundle.min.js"></script>
     <!--[if IE]><!-->
     <script src="./home_style/vendors/coreui/icons/js/svgxuse.min.js"></script>
     <!--<![endif]-->
-    <!-- Plugins and scripts required by this view-->
     <script src="./home_style/vendors/coreui/chartjs/js/coreui-chartjs.bundle.js"></script>
     <script src="./home_style/vendors/coreui/utils/js/coreui-utils.js"></script>
     <script src="./home_style/js/main.js"></script>
