@@ -56,24 +56,24 @@
                                 <input type="hidden" value="<s:property value="radioButton"/>" id="radioButtonValue"/>
                                 <input type="hidden" value="<s:property value="sum"/>" id="sum"/>
                                 <div style="display: flex">
-                                    <input id="sxten" name="radioButton" style="margin-top: 4px" type="radio" value="sxMaSV" checked=<s:property value="radioButton"/>==sxMaSV?"checked":"unchecked" />
+                                    <input id="sxMaSV" name="radioButton" style="margin-top: 4px" type="radio" value="sxMaSV" checked=<s:property value="radioButton"/>==sxMaSV?"checked":"unchecked" />
                                     <div style="padding-left: 6px">Sắp xếp theo mã sinh viên</div>
 
                                 </div>
                                 <div style="display: flex; margin-left: 50px">
-                                    <input id="sxlop" name="radioButton" style="margin-top: 4px" type="radio" value="sxMaMH"/>
+                                    <input id="sxMaMH" name="radioButton" style="margin-top: 4px" type="radio" value="sxMaMH"/>
                                     <div style="padding-left: 6px">Sắp xếp theo mã môn học</div>
                                 </div>
                                 <div style="display: flex; margin-left: 50px">
-                                    <input id="sxgioitinh" name="radioButton" style="margin-top: 4px" type="radio" value="sxHocKy"/>
+                                    <input id="sxHocKy" name="radioButton" style="margin-top: 4px" type="radio" value="sxHocKy"/>
                                     <div style="padding-left: 6px">Sắp xếp theo học kỳ</div>
                                 </div>
                                 <div style="display: flex; margin-left: 50px">
-                                    <input id="sxquequan" name="radioButton" style="margin-top: 4px" type="radio" value="sxDiemLan1"/>
+                                    <input id="sxDiemLan1" name="radioButton" style="margin-top: 4px" type="radio" value="sxDiemLan1"/>
                                     <div style="padding-left: 6px">Sắp xếp theo điểm lần 1</div>
                                 </div>
                                     <div style="display: flex; margin-left: 50px">
-                                    <input id="sxquequan" name="radioButton" style="margin-top: 4px" type="radio" value="sxDiemLan2"/>
+                                    <input id="sxDiemLan2" name="radioButton" style="margin-top: 4px" type="radio" value="sxDiemLan2"/>
                                     <div style="padding-left: 6px">Sắp xếp theo điểm lần 2</div>
                                 </div>
                                 <div style="display: flex; margin-left: 50px">

@@ -102,6 +102,6 @@
     <!-- Plugins and scripts required by this view-->
     <script src="./home_style/vendors/coreui/chartjs/js/coreui-chartjs.bundle.js"></script>
     <script src="./home_style/vendors/coreui/utils/js/coreui-utils.js"></script>
-    <!--<script src="javascript/AddDiemJS.js" type="text/javascript"></script>-->
+    <script src="javascript/AddDiemJS.js" type="text/javascript"></script>
     </body>
 </html>

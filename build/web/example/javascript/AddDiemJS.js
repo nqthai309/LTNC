@@ -14,6 +14,6 @@ function checkInfo(){
     }else{
         document.getElementById("btnThem").setAttribute("type", "submit");
         document.getElementById("btnThem").click();
-        alert("Thêm thành công");
+//        alert("Thêm thành công");
     }
 }
