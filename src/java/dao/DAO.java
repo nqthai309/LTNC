@@ -433,5 +433,78 @@ public class DAO {
         }
     }
     //Tùng
+//Thắng.!!!
+        public static int InsertKhoa(String maKhoa, String tenKhoa, String diaChi, String dienThoai) throws SQLException{
+        try {
+            String sql = "INSERT dbo.Khoa ( MaKhoa, TenKhoa, DiaChi, DienThoai ) "
+                    + "VALUES  ( '"+maKhoa+"',N'"+tenKhoa+"',N'"+diaChi+"','"+dienThoai+"')";
+            PreparedStatement ps  = getConnectDB().prepareStatement(sql);
+            return ps.executeUpdate();
+        }catch (Exception e){
+            e.printStackTrace();
+            return 0;
+        }finally{
+            if (getConnectDB() != null) {
+                getConnectDB().close();
+            }
+        }
+    }
+    
+    public static ResultSet findKhoaByMaKhoa(String maKhoa){
+        ResultSet rs = null;
+        try {
+            String sql = "SELECT * FROM dbo.Khoa WHERE MaKhoa = '"+maKhoa+"'";
+            PreparedStatement ps = getConnectDB().prepareStatement(sql);
+            rs = ps.executeQuery();
+            return rs;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }    
+    
+    public static int UpdateKhoa(String maKhoa, String tenKhoa, String diaChi, String dienThoai) throws SQLException
+    {
+        int i = 0;
+        try {
+            String sql = "UPDATE Khoa SET TenKhoa = '"+tenKhoa.trim()+"', "
+                         + "DiaChi = '"+diaChi.trim()+"', DienThoai = '"+dienThoai.trim()+"' \n" +
+                         "WHERE MaKhoa = '"+maKhoa+"'";
+            PreparedStatement ps = getConnectDB().prepareStatement(sql);
+            i =  ps.executeUpdate();
+            return i;
+        } catch(Exception e){
+            e.printStackTrace();
+            return 0;
+        } finally{
+            if(getConnectDB() != null){
+               getConnectDB().close();
+            }
+        }
+    }
+    
+    public static int DeleteKhoa (String maKhoa){
+        try{
+            String sql = "DELETE dbo.Khoa WHERE MaKhoa = '"+maKhoa+"'";
+            PreparedStatement ps = getConnectDB().prepareStatement(sql);
+            return ps.executeUpdate();
+        }catch(Exception e){
+            e.printStackTrace();
+            return 0;
+        }
+    }
 
+    public static ResultSet TimKiemKhoa(String textSearch){
+        ResultSet rs = null;
+        try{
+            String sql = "SELECT * FROM dbo.Khoa WHERE MaKhoa LIKE N'%"+textSearch+"%'";
+            PreparedStatement ps = getConnectDB().prepareStatement(sql);
+            rs = ps.executeQuery();
+            return rs;
+        }catch(Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+//Thắng.!!!
 }
