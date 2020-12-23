@@ -5,6 +5,8 @@
  */
 package bean;
 
+import java.util.Comparator;
+
 /**
  *
  * @author thai
@@ -14,7 +16,15 @@ public class Diem {
     private String maMH;
     private int hocKy;
     private int diemLan1;
-    private int diemlan2;
+    private int diemLan2;
+    
+    public int getDiemLan2() {
+        return diemLan2;
+    }
+
+    public void setDiemLan2(int diemLan2) {
+        this.diemLan2 = diemLan2;
+    }
 
     public String getMaSV() {
         return maSV;
@@ -32,9 +42,6 @@ public class Diem {
         return diemLan1;
     }
 
-    public int getDiemlan2() {
-        return diemlan2;
-    }
 
     public void setMaSV(String maSV) {
         this.maSV = maSV;
@@ -52,9 +59,41 @@ public class Diem {
         this.diemLan1 = diemLan1;
     }
 
-    public void setDiemlan2(int diemlan2) {
-        this.diemlan2 = diemlan2;
-    }
+     public static Comparator<Diem> maSVCompare = new Comparator<Diem>() {
+        @Override
+         public int compare(Diem o1, Diem o2) {
+            return o1.maSV.compareTo(o2.maSV);
+        }
+    };
+    
+    public static Comparator<Diem> maMHCompare = new Comparator<Diem>() {
+        @Override
+        public int compare(Diem o1, Diem o2) {
+            return o1.maMH.compareTo(o2.maMH);
+        }
+    };
+    
+    public static Comparator<Diem> hocKyCompare = new Comparator<Diem>() {
+        @Override
+        public int compare(Diem o1, Diem o2) {
+            return o1.hocKy - o2.hocKy;
+        }
+    };
+    
+    public static Comparator<Diem> diemLan1Compare = new Comparator<Diem>() {
+        @Override
+        public int compare(Diem o1, Diem o2) {
+            return o1.diemLan1 - o2.diemLan1;
+        }
+    };
+        
+    public static Comparator<Diem> diemLan2Compare = new Comparator<Diem>() {
+        @Override
+        public int compare(Diem o1, Diem o2) {
+            return o1.diemLan2 - o2.diemLan2;
+        }
+    };
+    
     
     
     

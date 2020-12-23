@@ -74,22 +74,6 @@ public class DAO {
             }
         }
     }
-    public static ResultSet GetDiem() throws SQLException{
-        ResultSet rs = null;
-        try {
-            String sql = "Select * from Diem";
-            PreparedStatement ps = getConnectDB().prepareStatement(sql);
-            rs = ps.executeQuery();
-            return rs;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }finally{
-            if (getConnectDB() != null) {
-                getConnectDB().close();
-            }
-        }
-    }
     public static ResultSet GetLop() throws SQLException{
         ResultSet rs = null;
         try {
@@ -375,6 +359,79 @@ public class DAO {
     
 //Hiếu.!!!
     
+//Tùng
+    public static ResultSet GetDiem() throws SQLException{
+        ResultSet rs = null;
+        try {
+            String sql = "Select * from Diem";
+            PreparedStatement ps = getConnectDB().prepareStatement(sql);
+            rs = ps.executeQuery();
+            return rs;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }finally{
+            if (getConnectDB() != null) {
+                getConnectDB().close();
+            }
+        }
+    }
+        
+        public static ResultSet findDiemByMaSVMaMH(String maSV, String maMH){
+        ResultSet rs = null;
+        try {
+            String sql = "Select * from Diem where MaSV = '"+maSV+"' and MaMH = '"+maMH+"'";
+            PreparedStatement ps = getConnectDB().prepareStatement(sql);
+            rs = ps.executeQuery();
+            return rs;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static int DeleteDiem(String maSV,String maMH){
+        try {
+            String sql = "Delete from Diem where MaSV = '"+maSV+"' and MaMH = '"+maMH+"'";
+            PreparedStatement ps = getConnectDB().prepareStatement(sql);
+            return ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
     
+    public static int UpdateDiem(String maSV, String maMH, int hocKy, int diemLan1,  int diemLan2) throws SQLException{
+        int i=0;
+        try {
+            String sql = "Update Diem SET HocKy = '"+hocKy+"', DiemLan1 = '"+diemLan1+"', DiemLan2 = '"+diemLan2+"' where MaSV = '"+maSV+"' and MaMH = '"+maMH+"'";
+            PreparedStatement ps = getConnectDB().prepareStatement(sql);
+            i = ps.executeUpdate();
+            return i;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        } finally {
+            if (getConnectDB() != null) {
+		getConnectDB().close();
+            }
+        }
+    }
+    
+    public static ResultSet TimKiemDiemByMaSV(String textSearch){
+        ResultSet rs = null;
+        try {
+            String sql = "Select * from Diem where MaSV like N'%"+textSearch+"%' ";
+            PreparedStatement ps = getConnectDB().prepareStatement(sql);
+            rs = ps.executeQuery();
+            return rs;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    //Tùng
 
 }
