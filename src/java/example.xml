@@ -101,6 +101,7 @@
         <action name="addLopSubmitAction" class="action.LopAction" method="execute">
             <result name="complete" type="chain">listLopAction</result>
             <result name="fail" type="redirectAction">loginAction</result>
+            <result name="ex" type="chain">addLopAction</result>
         </action>
         <action name="editLopAction" class="action.LopAction" method="EditLop">
             <result name="editLop">EditLop.jsp</result>
@@ -129,12 +130,39 @@
         
         
         <!--Tùng-->
-        
-        
+
         
         <!--Thắng-->
             <!--code-->
-        
+        <action name="listKhoaAction" class="action.KhoaAction" method="GetKhoa">
+            <result name="GetKhoa">GetKhoa.jsp</result>
+            <result name="fail" type="redirectAction">loginAction</result>
+        </action>
+        <action name="addKhoaAction" class="action.KhoaAction" method="AddKhoa">
+            <result name="AddKhoa">AddKhoa.jsp</result>
+            <result name="fail" type="redirectAction">loginAction</result>
+        </action>
+        <action name="addKhoaSubmitAction" class="action.KhoaAction" method="execute">
+            <result name="complete" type="chain">listKhoaAction</result>
+            <result name="fail" type="redirectAction">loginAction</result>
+            <result name="ex" type="chain">addKhoaAction</result>
+        </action>
+        <action name="editKhoaAction" class="action.KhoaAction" method="EditKhoa">
+            <result name="editKhoa">EditKhoa.jsp</result>
+            <result name="fail" type="redirectAction">loginAction</result>
+        </action>
+         <action name="editKhoaSubmitAction" class="action.KhoaAction" method="EditKhoaSubmit">
+            <result name="complete" type="chain">listKhoaAction</result>
+            <result name="fail" type="redirectAction">loginAction</result>
+        </action>
+        <action name="deleteKhoaAction" class="action.KhoaAction" method="DeleteKhoa">
+            <result name="complete" type="chain">listKhoaAction</result>
+            <result name="fail" type="redirectAction">loginAction</result>
+        </action>
+        <action name="timKiemKhoaAction" class="action.KhoaAction" method="TimKiemKhoa">
+            <result name="complete">GetKhoa.jsp</result>
+            <result name="fail" type="redirectAction">loginAction</result>
+        </action>
         
         
         

@@ -1,9 +1,8 @@
 <%-- 
-    Document   : AddKhoa
-    Created on : Nov 28, 2020, 4:50:49 PM
-    Author     : Thang
+    Document   : EditKhoa
+    Created on : Dec 16, 2020, 11:50:48 PM
+    Author     : ThangBeu
 --%>
-
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix = "s" uri = "/struts-tags"%>
@@ -20,14 +19,14 @@
         
     
 
-        <title>Thêm Khoa</title>
+        <title>Edit Khoa</title>
 
         <!-- Main styles for this application-->
         <link href="./home_style/css/style.css" rel="stylesheet">
         <!-- Global site tag (gtag.js) - Google Analytics-->
         <link href="./home_style/vendors/coreui/chartjs/css/coreui-chartjs.css" rel="stylesheet">
     </head>
-    <body id = "bodyID">
+    <body>
         <s:include value="menu.jsp"></s:include>
     <div class="c-wrapper c-fixed-components">
         <header class="c-header c-header-light c-header-fixed c-header-with-subheader">
@@ -38,44 +37,48 @@
                 <div class="container-fluid">
                     <div class="fade-in">
                         <!--body-->
-                        <div class="card">
+ <div class="card">
     <div class="card-header"><strong>Basic Form</strong> Elements</div>
     <div class="card-body">
-        <s:form class="form-horizontal" action="addKhoaSubmitAction" method="post" enctype="multipart/form-data">
-
-            <div class="form-group row">
+        <s:form class="form-horizontal" action="editKhoaSubmitAction" method="post" enctype="multipart/form-data">
+            <s:if test="noData==true">
+                <s:iterator value="listKhoas">
+                <div class="form-group row">
                 <label class="col-md-3 col-form-label" for="text-input">Mã Khoa</label>
                 <div class="col-md-9">
-                    <input class="form-control" id="maKhoa" type="text" name="maKhoa" placeholder="Mã Khoa">
+                    <input class="form-control" readonly value="<s:property value="maKhoa"/>" id="maKhoa" type="text" name="maKhoa" placeholder="Mã Khoa">
                 </div>
-            </div>
+                </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label" for="text-input">Tên Khoa</label>
                 <div class="col-md-9">
-                    <input class="form-control" id="tenKhoa" type="text" name="tenKhoa" placeholder="Tên Khoa">
+                    <input class="form-control"  value="<s:property value="tenKhoa"/>" id="tenKhoa" type="text" name="tenKhoa" placeholder="Tên Khoa">
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label" for="address">Địa Chỉ</label>
                 <div class="col-md-9">
-                    <input class="form-control" type="address" id="diaChi" name="diaChi" placeholder="Địa Chỉ" autocomplete="">
+                    <input class="form-control"  value="<s:property value="diaChi"/>" type="address" id="diaChi" name="diaChi" placeholder="Địa Chỉ" autocomplete="">
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label" for="text-input">Số Điện Thoại</label>
                 <div class="col-md-9">
-                    <input class="form-control" id="dienThoai" type="text" name="dienThoai" placeholder="Số Điện Thoại Của Khoa">
+                    <input class="form-control" value="<s:property value="dienThoai"/>" id="dienThoai" type="text" name="dienThoai" placeholder="Số Điện Thoại Của Khoa">
                 </div>
             </div>
-                        
-                        
-                </div>
-            </div>
+                </s:iterator>
             
-            <input type="hidden"  id="divThongBao" value="<s:property value="checkError" />"/>
+            <div style="color:red; font-size:20px; text-align:center" id="divThongBao"></div>
             <div class="card-footer">
                 <button id="btnThem" class="btn btn-sm btn-primary" type="submit"> Submit</button>
             </div>
+            </s:if>
+            <s:else>
+                <div style="color: red;">No Data Found.</div>
+            </s:else>
+         
+            
         </s:form>
     </div>
 </div>
@@ -97,8 +100,9 @@
     <!-- Plugins and scripts required by this view-->
     <script src="./home_style/vendors/coreui/chartjs/js/coreui-chartjs.bundle.js"></script>
     <script src="./home_style/vendors/coreui/utils/js/coreui-utils.js"></script>
-    <script src="javascript/AddKhoaJS.js" type="text/javascript"></script>
     <script src="./home_style/js/main.js"></script>
     </body>
 </html>
+
+
 
