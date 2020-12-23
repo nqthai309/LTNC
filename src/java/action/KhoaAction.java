@@ -24,11 +24,18 @@ public class KhoaAction extends ActionSupport{
     ResultSet rs = null;
     List<Khoa> listKhoas = null;
     private boolean noData = false;
+    private boolean checkError = false;
     Khoa khoa = null;
-
-
     String submitType, textSearch, radioButton;
+    
+    
+    public void setCheckError(boolean checkError) {
+        this.checkError = checkError;
+    }
 
+    public boolean isCheckError() {
+        return checkError;
+    }
     public void setRadioButton(String radioButton) {
         this.radioButton = radioButton;
     }
@@ -112,15 +119,22 @@ public class KhoaAction extends ActionSupport{
 
        @Override
     public String execute() throws Exception {
-         Map session = ActionContext.getContext().getSession();
+        Map session = ActionContext.getContext().getSession();
         if(session.get("SessionLogin") != null){
-                  try {
-            int result = DAO.InsertKhoa(maKhoa.trim(), tenKhoa.trim(), diaChi.trim(), dienThoai.trim());
-            if(result > 0){
-                return "complete";
+            try {
+            ResultSet rs = DAO.findKhoaByMaKhoa(maKhoa.trim());
+            if(!(rs.next())){
+                int result = DAO.InsertKhoa(maKhoa.trim(), tenKhoa.trim(), diaChi.trim(), dienThoai.trim());
+                if(result > 0){
+                    return "complete";
+                }else{
+                    return "fail";
+                }   
             }else{
-                return "fail";
+                checkError = true;
+                return "ex";
             }
+            
         } catch (Exception e) {
             e.printStackTrace();
             return null;
